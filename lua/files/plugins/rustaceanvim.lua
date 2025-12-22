@@ -1,6 +1,6 @@
 return {
   "mrcjkb/rustaceanvim",
-  version = "^4",
+  version = "^6",
   ft = { "rust" },
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
@@ -16,7 +16,11 @@ return {
         end,
         capabilities = lsp_utils.get_capabilities(),
         default_settings = {
-          ["rust-analyzer"] = {},
+          ["rust-analyzer"] = {
+            checkOnSave = { command = "clippy" },
+            cargo = { allFeatures = true },
+            procMacro = { enable = true },
+          },
         },
       },
       dap = {},

@@ -29,6 +29,7 @@ return {
     vim.lsp.config("svelte", {
       capabilities = capabilities,
       on_attach = function(client, bufnr)
+        lsp_utils.setup_keymaps(bufnr)
         vim.api.nvim_create_autocmd("BufWritePost", {
           group = vim.api.nvim_create_augroup("SvelteTsJsNotify", { clear = true }),
           pattern = { "*.js", "*.ts" },
