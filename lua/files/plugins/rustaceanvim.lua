@@ -1,26 +1,24 @@
 return {
   "mrcjkb/rustaceanvim",
-  version = "^4", -- Recommended
+  version = "^4",
   ft = { "rust" },
-  dependencies = "neovim/nvim-lspconfig",
+  dependencies = {
+    "hrsh7th/cmp-nvim-lsp",
+  },
   config = function()
-    local on_attach = require("files.plugins.lsp.lspconfig").on_attach
-    local capabilities = require("files.plugins.lsp.lspconfig").capabilities
+    local lsp_utils = require("files.plugins.lsp.utils")
 
     vim.g.rustaceanvim = {
-      -- Plugin configuration
       tools = {},
-      -- LSP configuration
       server = {
-        on_attach = on_attach,
-        capabilities = capabilities,
-
+        on_attach = function(client, bufnr)
+          lsp_utils.setup_keymaps(bufnr)
+        end,
+        capabilities = lsp_utils.get_capabilities(),
         default_settings = {
-          -- rust-analyzer language server configuration
           ["rust-analyzer"] = {},
         },
       },
-      -- DAP configuration
       dap = {},
     }
   end,
