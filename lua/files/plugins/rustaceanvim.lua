@@ -6,7 +6,7 @@ return {
     "hrsh7th/cmp-nvim-lsp",
   },
   config = function()
-    local lsp_utils = require("files.plugins.lsp.utils")
+    local lsp_utils = require("files.lsp.utils")
 
     vim.g.rustaceanvim = {
       tools = {},

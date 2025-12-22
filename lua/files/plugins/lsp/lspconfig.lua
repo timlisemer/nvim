@@ -6,7 +6,7 @@ return {
     { "antosha417/nvim-lsp-file-operations", config = true },
   },
   config = function()
-    local lsp_utils = require("files.plugins.lsp.utils")
+    local lsp_utils = require("files.lsp.utils")
 
     lsp_utils.setup_diagnostics()
 
