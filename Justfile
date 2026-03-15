@@ -1,0 +1,2 @@
+check:
+    stylua --check lua/
